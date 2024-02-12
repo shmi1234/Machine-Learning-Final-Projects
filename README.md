@@ -32,7 +32,7 @@
     <h2>팀원 소개</h2>
      <ul>
       <li>윤상하(조장) : 기획, EDA, Machine Learning, Framework 설계, 디자인, PPT</li>
-      <li>박성훈 : 기획, EDA, Machine Learning, DB 설계, Framework 설계, 기능 개발, 디자인, PPT</li>
+      <li><h4>박성훈 : 기획, EDA, Machine Learning, DB 설계, Framework 설계, 기능 개발, 디자인, PPT</h4></li>
       <li>정선우 : 기획, EDA, 제안</li>
       <li>김동규 : 기획, EDA, Machine Learning</li>
     </ul>
@@ -46,7 +46,7 @@
     <li><a href="프로젝트 보고서_박성훈.hwp">분석 보고서</a> - 범죄 데이터 분석에 대한 보고서 입니다.</li>
     <li><a href="드랍더 비트 Final Project - 최종 완료.pptx">범죄 데이터 PPT<a> - 범죄 데이터 분석 PPT 자료 입니다. </li>
     <li><a href="https://github.com/shmi1234/Machine-Learning-Final-Projects/tree/main/CSV%ED%8C%8C%EC%9D%BC">CSV 파일 리스트<a> - 분석에 사용된 CSV 파일 입니다.</li>
-    <li><a href="https://github.com/shmi1234/Machine-Learning-Final-Projects/blob/main/Django.zip">서비스 구현 페이지<a> - 서비스 구현 페이지 장고 파일 입니다.</li>
+    <li><a href="https://github.com/shmi1234/Machine-Learning-Final-Projects/blob/main/Django.zip">서비스 구현 페이지<a> - 서비스 구현 페이지 Django 파일 입니다.</li>
   </ul>
 </section>
 
