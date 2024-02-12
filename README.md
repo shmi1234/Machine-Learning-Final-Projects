@@ -105,7 +105,7 @@ CCTV와 검거율 간의 상관관계를 찾아보려 했으나 예상과는 달
 </section>
 
 </main>
-
+<hr>
 <footer>
   <p>&copy; 범죄 데이터 분석 프로젝트</p>
 </footer>
