@@ -45,7 +45,8 @@
     <li><a href="범죄 데이터 프로젝트 계획서.pdf">프로젝트 계획서</a> - 프로젝트 초기 계획서 입니다.</li>
     <li><a href="범죄율 예측 분석 프로젝트_박성훈.ipynb">범죄 데이터 분석 자료</a> - 프로젝트 데이터 분석 코드 및 시각화 자료 쥬피터 파일 입니다.</li>
     <li><a href="범죄 데이터 프로젝트 보고서.pdf">분석 보고서</a> - 범죄 데이터 분석에 대한 보고서 입니다.</li>
-    <li><a href="드랍더 비트 Final Project - 최종 완료.pptx">범죄 데이터 PPT<a> - 범죄 데이터 분석 PPT 자료 입니다. </li>
+    <li><a href="드랍더비트 범죄 데이터 프로젝트 PDF">범죄 데이터 PDF<a> - 범죄 데이터 분석 PDF 자료 입니다. </li>
+      <li><a href="드랍더비트 범죄 데이터 프로젝트 PPT">범죄 데이터 PPT<a> - 범죄 데이터 분석 PPT 자료 입니다. </li>
     <li><a href="https://github.com/shmi1234/Machine-Learning-Final-Projects/tree/main/CSV%ED%8C%8C%EC%9D%BC">CSV 파일 리스트<a> - 분석에 사용된 CSV 파일 입니다.</li>
     <li><a href="https://github.com/shmi1234/Machine-Learning-Final-Projects/blob/main/Django.zip">서비스 구현 페이지<a> - 서비스 구현 페이지 Django 파일 입니다.</li>
   </ul>
