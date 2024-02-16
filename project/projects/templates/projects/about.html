@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        .carousel_main {
+            width: 1000px;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            user-select: none;
+        }
+        
+        .carousel_wrapper {
+            display: flex;
+            transition: transform 1s;
+        }
+        
+        .carousel_slide {
+            flex: 0 0 1000px;
+            position: relative;
+        }
+        
+        .carousel_slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel_button_container {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .carousel_button {
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            background: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .carousel_prev {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 0px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .carousel_next {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 0px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .carousel_pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        
+        .carousel_circle {
+            width: 10px;
+            height: 10px;
+            background-color: #aaa;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .carousel_circle.active {
+            background-color: #333;
+        }
+    </style>
+    <head>
+    </head>
+    <body>
+        <!-- Page content-->
+        <div class="head">
+            <div class="title">
+                <h1>Safety Circle in Seoul!
+                </h1>
+                <p class="lead">서울시 안전 지킴이</p>
+                <p>produce by.DROP THE BIT</p>
+            </div>
+            <div class="carousel_main">
+                <div class="carousel_wrapper">
+                    <div class="carousel_slide">
+                        <img src="https://postfiles.pstatic.net/MjAyNDAyMDZfMTI5/MDAxNzA3MTk4ODA3NTY3.PzqTCmmUiHGORkFnCP19sENsHx0rugqSF7w_uzju23Qg.DBu00IBTGWWtp9BXcirzHyniLjcyKIXsfi89MRR6Xbgg.PNG.shmi1234/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C_%ED%8E%98%EC%9D%B4%EC%A7%800.png?type=w773" alt="doyeon0430 이미지" />
+                    </div>
+                    <div class="carousel_slide">
+                        <img src="https://postfiles.pstatic.net/MjAyNDAyMDZfMjEx/MDAxNzA3MTk4NjA1OTQ0.KqRoZYPrSbo346momglDlLLLWSW3RBY-G9EdGYMhAO4g.2M5JLG-o5YlpSPnwiF8a_I_arh1f5ruDH9eFC-P-OKkg.PNG.shmi1234/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C_%ED%8E%98%EC%9D%B4%EC%A7%801.png?type=w773" alt="doyeon0430 이미지" />
+                    </div>
+                    <div class="carousel_slide">
+                        <img src="https://postfiles.pstatic.net/MjAyNDAyMDZfMjY4/MDAxNzA3MTk4NjA1OTQ5.0UJtRM611HUxzoWfvPb2Dcxj9gPEuCbKVx2IU2h_lgIg.6z6DzTwt7J2V03Gs-hnCoAiOgoQ_V15-QeuoY5hSsqEg.PNG.shmi1234/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C_%ED%8E%98%EC%9D%B4%EC%A7%803.png?type=w773" alt="doyeon0430 이미지" />
+                    </div>
+                    <div class="carousel_slide">
+                        <img src="https://postfiles.pstatic.net/MjAyNDAyMDZfMjky/MDAxNzA3MTk4NjA2MTg4.Qne5C_dv6A6DgXkhBDA4uHKcYgtbbSIi5lwTCnZ9IKUg.2PCC2EhmGyIp-4HmJQFCoNo_bGudQPjsdJ9Fh5oYgEog.PNG.shmi1234/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C_%ED%8E%98%EC%9D%B4%EC%A7%804.png?type=w773" alt="doyeon0430 이미지" />
+                    </div>
+                    <div class="carousel_slide">
+                        <img src="https://postfiles.pstatic.net/MjAyNDAyMDZfMTgy/MDAxNzA3MTk4NjA2NTE5.UXtNccz-3E3B8CtiLnJpt-veY-HiHEsWQULYeB6Hm8cg.96lH8AbF9KZzZi8opGHGbxV55VpKygruD-58xZfSqGcg.PNG.shmi1234/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C_%ED%8E%98%EC%9D%B4%EC%A7%805.png?type=w773" alt="doyeon0430 이미지" />
+                    </div>
+                </div>
+                <div class="carousel_button_container">
+                    <button type="button" class="carousel_prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                            <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="carousel_next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+                            <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="carousel_pagination">
+                    <div class="carousel_circle"></div>
+                    <div class="carousel_circle"></div>
+                    <div class="carousel_circle"></div>
+                    <div class="carousel_circle"></div>
+                    <div class="carousel_circle"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/static/js/scripts.js"></script>
+        <script>
+        const swiper = document.querySelector('.carousel_wrapper');
+        const prevButtons = document.querySelectorAll('.carousel_prev');
+        const nextButtons = document.querySelectorAll('.carousel_next');
+        const bullets = document.querySelectorAll('.carousel_circle');
+
+        let currentSlide = 0;
+
+        function showSlide(slideIndex) {
+            swiper.style.transform = `translateX(-${slideIndex * 1000}px)`;
+            currentSlide = slideIndex;
+
+            bullets.forEach((bullet, index) => {
+                if (index === currentSlide) {
+                    bullet.classList.add('active');
+                } else {
+                    bullet.classList.remove('active');
+                }
+            });
+        }
+
+        prevButtons.forEach((prevButton) => {
+            prevButton.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    showSlide(currentSlide - 1);
+                }
+            });
+        });
+
+        nextButtons.forEach((nextButton) => {
+            nextButton.addEventListener('click', () => {
+                if (currentSlide < 4) { // Adjust this number based on the number of slides
+                    showSlide(currentSlide + 1);
+                }
+            });
+        });
+
+        bullets.forEach((bullet, index) => {
+            bullet.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        showSlide(0);
+    </script>
+    </body>
+</html>
+{% endblock %}

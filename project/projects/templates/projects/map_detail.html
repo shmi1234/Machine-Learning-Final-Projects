@@ -1,0 +1,566 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            .container {
+                width : 70%%;
+                display: grid; 
+                grid-template-columns: 1.25fr 0.75fr; 
+                grid-template-rows: 0.3fr 0.9fr 0.6fr 3fr 0.2fr; 
+                gap: 20px; 20px; 
+                grid-template-areas: 
+                    "header header"
+                    "con con"
+                    "map form"
+                    "map result"
+                    "footer footer"; 
+                }
+                .con { grid-area: con;}
+                    .loading-1, .loading-2, .loading-3, .loading-4 {
+                        border:2px solid #000;
+                        border-radius:50%;
+                        position:absolute;
+    
+                        }
+                        .loading-1 {
+                        width:80px;
+                        height:80px;
+                        border-color:transparent #000 transparent transparent;
+                        top:180px;
+                        left:60%;
+                        animation:loading1 2s 50 linear;
+                        }
+                        .loading-2 {
+                        width:60px;
+                        height:60px;
+                        border-color:transparent transparent transparent #000;
+                        top:190px;
+                        left:calc(60% + 10px);
+                        animation:loading2 2s 50 linear;
+                        }
+                        .loading-3 {
+                        width:40px;
+                        height:40px;
+                        border-color:#000 transparent       transparent transparent;
+                        top:200px;
+                        left:calc(60% + 20px);
+                        animation:loading1 2s 50 linear;
+                        }
+                        .loading-4 {
+                        width:20px;
+                        height:20px;
+                        border-color:transparent transparent #000 transparent;
+                        top:210px;
+                        left:calc(60% + 30px);
+                        animation:loading2 2s 50 linear;
+                        }
+    
+                        @keyframes loading1 {
+                        from {transform:rotate(0deg)}
+                        to {transform:rotate(720deg)}
+                        }
+                        @keyframes loading2 {
+                        from {transform:rotate(0deg)}
+                        to {transform:rotate(-720deg)}
+                        }
+    
+                        .letter {
+                        position:absolute;
+                        top:320px;
+                        left:44%;
+                        font-size:19px;
+                        font-family:tahoma;
+                        text-transform:uppercase;
+                        letter-spacing:3px;
+                        height:40px;
+                        overflow:hidden;
+                        padding-top:15px;
+                        animation:paragraph 2s 50 linear;
+                        animation-delay:1s
+                        }
+    
+                        @keyframes paragraph {
+                        from {
+                            opacity:1;
+                        }
+                        50% { 
+                            opacity:0;
+                        }
+                        to {
+                            opacity:1;
+                        }
+                        }
+    
+    
+                        .d {
+                        display:inline-block;
+                        padding:0 5px;
+                        animation:d 2s 50 ease-in-out;
+                        }
+    
+                        @keyframes d {
+                        from {transform:translate(0, 0)}
+                        
+                        to {
+                            transform:translate(0, 50px)
+                        }
+                        }
+    
+                        .i {
+                        display:inline-block;
+                        padding:0 2px;
+                        animation:i 2s 50 ease-in-out;
+                        transition:all 2s ease-in-out
+                        }
+    
+                        @keyframes i {
+                        from {transform:translate(0, 0)}
+    
+                        to {
+                        transform:translate(0, -50px)
+                        }
+                        }
+                .map { grid-area: map;width:100%;}
+                .form { grid-area: form; }
+                .result { grid-area: result;
+                    box-sizing: border-box;
+                    @import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&display=swap");
+
+
+                    body {
+                    margin: 0;
+                    background-color: white;
+                    display: flex;
+                    align-items: center;
+                    box-sizing: border-box;
+                    }
+                    .sec {
+                    margin: 0 auto;
+                    display: flex;
+                    box-shadow: 0px 5px 6px #bbbbbb;
+                    border-radius: 20px;
+                    }
+                    .right-card,
+                    .left-card {
+                    flex: 1;
+                    }
+
+                    .left-card {
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 20px;
+                    padding: 3rem;
+                    background-image: linear-gradient(90deg, rgba(76,77,78,1) 0%, rgba(11,10,10,1) 100%);
+                    }
+
+                    .lc-h1 {
+                    margin: 0;
+                    font-size: 2.5rem;
+                    color: #ffffff;
+                    }
+
+                    .lc-score {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding: 1.5rem;
+                    height: 10rem;
+                    width: 10rem;
+                    margin-top: 2rem;
+                    margin-bottom: 2rem;
+                    border-radius: 50%;
+                    background-image: linear-gradient(131deg, rgba(21,21,22,1) 0%, rgba(74,74,81,1) 53%, rgba(160,160,160,1) 100%);
+                    }
+
+                    .lc-result {
+                    margin: 0;
+                    font-size: 3rem;
+                    color: #fff;
+                    justify-content: center;
+                    padding
+                    }
+
+                    .lc-total {
+                    margin: 0;
+                    font-size: 1rem;
+                    color: #fff;
+                    }
+
+                    .lc-grade {
+                    text-transform: capitalize;
+                    font-size: 3rem;
+                    color: #fff;
+                    padding: 1rem;
+                    }
+
+                    .lc-remarks {
+                    margin: 0;
+                    text-align: center;
+                    font-size: 1rem;
+                    color: #fff;
+                    }
+
+                    /* ------------------ */
+
+                    .right-card {
+                    padding: 1.5rem;
+                    }
+                    .rc-scoreboard {
+                    margin: 0.5rem 0;
+                    }
+                    .rc-h1 {
+                    margin: 0;
+                    font-size: 1rem;
+                    text-transform: capitalize;
+                    font-size: 1.5rem;
+                    }
+
+                    .rc-score {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 0 0.5rem;
+                        border-radius: 8px;
+                        margin-bottom: 0.5rem;
+                        padding-top: 15px;
+                      }
+                    .rc-score p:first-of-type {
+
+                        flex-grow: 2;
+
+                    }
+                    .rc-score p:last-of-type {
+                    flex-grow: 6;
+                    text-align: right;
+                    }
+
+                    .cctv {
+                    background-color: #fff5f5;
+
+                    }
+                    .police {
+                    background-color: #fff8eb;
+                    }
+                    .safe {
+                    background-color: #f2f8f6;
+                    }
+                    .conv {
+                    background-color: #f2f3f8;
+                    }
+
+                    .ent {
+                        background-color: #fff5f5;
+                    }
+
+                    .drunk {
+                        background-color: #fff8eb;
+                    }
+
+                    .gu {
+                        background-color: #f2f8f6;
+                    }
+                    .crime {
+                    background-color: #f2f3f8;
+                    }
+
+                    .count {
+                        background-color: #fff5f5;
+                    }
+
+                    .rc-button {
+                    background-color: #303b5a;
+                    color: #ffffff;
+                    padding: 0.5rem 2rem;
+                    width: 100%;
+                    border: none;
+                    border-radius: 20px;
+                    text-transform: capitalize;
+                    font-size: 1rem;
+                    margin-top: 1rem;
+                } }
+                .footer { grid-area: footer; }
+            footer {
+                    bottom: 0;
+                    width: 100%       
+                }
+        </style>
+    <body>
+        <div class = "container" style="text-align: center;">
+
+            <div class = "con" style="text-align: center;">
+                <div class="text-center mt-5" style="text-align: center;">
+                    <h1>Safety Circle in Seoul!
+                        <div class="loading-1"></div>
+                        <div class="loading-2"></div>
+                        <div class="loading-3"></div>
+                        <div class="loading-4"></div>
+                    </h1>
+                    <p class="lead">서울시 안전 지킴이</p>
+                    {% if user.is_authenticated %}
+                    <p>produce by.DROP THE BIT</p>
+                    {% else %}
+                    <p>회원가입을 하시면 더 많은 기능을 이용할 수 있습니다</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class = "map"  id="map" style="width:100%;height:800px;">
+                <script>
+                    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                    mapOption = { 
+                        center: new kakao.maps.LatLng('{{ y }}', '{{ x }}'), // 지도의 중심좌표
+                        level: 3 // 지도의 확대 레벨
+                    };
+                    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+                    
+                    var positions = [
+                        // Iterate through markers and add positions
+                        {% for marker in markers %}
+                        {
+                            title: '{{ marker.title }}',
+                            latlng: new kakao.maps.LatLng({{ marker.latlng.lng }}, {{ marker.latlng.lat }})
+                        },
+                        {% endfor %}
+                    ];
+                    var imageSrc_cctv = "https://postfiles.pstatic.net/MjAyNDAxMTlfMTgw/MDAxNzA1NjQ1NDM0OTA2.A2jjEd-_mqaVilIO96nluXR6l2MBeVfjbVt7Hue0XJQg.4Ib9oyqGoJg1to3SGuBVLnSqBJQRqjnsuCWfi0UspqYg.PNG.shmi1234/KakaoTalk_20240119_152131262_01.png?type=w773";
+                    var imageSrc_drunk = "https://postfiles.pstatic.net/MjAyNDAxMTlfMTY1/MDAxNzA1NjQ1NDM0ODk5.9KsiLh7mvlyMzDwBjiEJ6kWf_uspD0eWdsIO_cg9Hdsg.HPBzT58P_NUwLw7IkMeClaOGVhN5wlVb7NTL1CKjJl8g.PNG.shmi1234/KakaoTalk_20240119_152131262_03.png?type=w773";
+                    var imageSrc_police = "https://postfiles.pstatic.net/MjAyNDAxMTlfMjgx/MDAxNzA1NjQ1NDM0ODkz.cG3_zHs1yU-4l-kE1NGI2Sn-eRfURilO1fPjXl7ErKog.8wS0t4RXIHCaBeculM72pO9jyCziffR6SF1taaJq39gg.PNG.shmi1234/KakaoTalk_20240119_152131262.png?type=w773";
+                    var imageSrc_crash = "https://postfiles.pstatic.net/MjAyNDAxMTlfNzYg/MDAxNzA1NjQ1NDM0OTA0.83HWrcnOGGnJyUHglKFlBNzjSRjK3VyRTGyJQIftaAYg.AWfc5htO-YNnyHhzwYcP9RfflBIW0uS2GP4y5fcJI30g.PNG.shmi1234/KakaoTalk_20240119_152131262_04.png?type=w773";
+                    var imageSrc_conv = "https://postfiles.pstatic.net/MjAyNDAxMTlfMjc5/MDAxNzA1NjQ1NDM0ODk3.JTtV6IwvqLibO4A-ctWMJT2XaqKPiXMaCXGQ86DlTk4g.DENtANEnDWT2DwfdMjYa4e3J-CiPswK_g3jLQ8ZKBC0g.PNG.shmi1234/KakaoTalk_20240119_152131262_02.png?type=w773";
+                    var imageSrc_safe = "https://postfiles.pstatic.net/MjAyNDAxMjJfMTQ1/MDAxNzA1ODg0MDI4OTE0.ToGwsEfR2HXNcP49wjeZYLDNAaMsNP29yXuIrk9Rl6Mg.ycBp7yvcQugpKYnPO782nFungGe-c5Y8zYG5_tTa9BIg.PNG.shmi1234/KakaoTalk_20240122_093952492.png?type=w773";
+                    
+                    var cctv_count = 0;
+                    var drunk_count = 0;
+                    var police_count = 0;
+                    var crash_count = 0;
+                    var conv_count = 0;
+                    var safe_count = 0;
+                    
+                    for (var i = 0; i < positions.length; i++) {
+                        // 마커 이미지의 이미지 크기 입니다
+                        var imageSize = new kakao.maps.Size(50, 50);
+                        if (positions[i].title == 'CCTV'){
+                            // 마커 이미지를 생성합니다
+                            cctv_count += 1;    
+                            var markerImage = new kakao.maps.MarkerImage(imageSrc_cctv, imageSize);}
+                        else if (positions[i].title == '유흥시설'){
+                            // 마커 이미지를 생성합니다    
+                            drunk_count += 1; 
+                            var markerImage = new kakao.maps.MarkerImage(imageSrc_drunk, imageSize);}
+                        else if (positions[i].title == '경찰서'){
+                            // 마커 이미지를 생성합니다  
+                            police_count += 1; 
+                            var markerImage = new kakao.maps.MarkerImage(imageSrc_police, imageSize);}
+                        else if (positions[i].title == '음주 운전 다발구역'){
+                            // 마커 이미지를 생성합니다    
+                            crash_count += 1; 
+                            var markerImage = new kakao.maps.MarkerImage(imageSrc_crash, imageSize);}
+                        else if (positions[i].title == '편의점'){
+                            // 마커 이미지를 생성합니다 
+                            conv_count += 1;    
+                            var markerImage = new kakao.maps.MarkerImage(imageSrc_conv, imageSize);}
+                        else if (positions[i].title == '지킴이집'){
+                            // 마커 이미지를 생성합니다 
+                            safe_count += 1;    
+                            var markerImage = new kakao.maps.MarkerImage(imageSrc_safe, imageSize);}  
+                    
+                        var marker = new kakao.maps.Marker({
+                            map: map,
+                            position: positions[i].latlng,
+                            title: positions[i].title,
+                            image : markerImage // 마커 이미지 
+                        });
+                    }
+                    function setCenter(latitude, longitude) {            
+                        var moveLatLon = new kakao.maps.LatLng('{{ y }}', '{{ x }}');
+                        map.setCenter(moveLatLon);
+                    }
+                    
+                    function panTo(latitude, longitude) {
+                        var moveLatLon = new kakao.maps.LatLng('{{ y }}', '{{ x }}');
+                        map.panTo(moveLatLon);            
+                    } 
+                </script>
+            </div>
+            
+            <div class="form">
+                <form method="GET" class="form-control" action="{% url 'prj:map_detail' %}" style="width:100%;height:100%;">
+                    <table class="table-secondary" style="width:100%;height:100%;">
+                        <tr>
+                            <td colspan="2">
+                                <input id="address" type="text" name="search_keyword" placeholder="검색어를 입력하세요"
+                                       style="width:100%;height:100%;font-size=1rem;text-align: center;">
+                            </td>
+                            <td rowspan="2">
+                                    <button type="submit" class="btn btn-outline-secondary"
+                                            style="width:100%;height:100%;font-size=2rem;">검색
+                                    </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {% if user.is_authenticated %}
+                                    <select name="search_time" style="width:100%;height:100%;text-align: center;">
+                                        <option value="morning">오전</option>
+                                        <option value="afternoon">오후</option>
+                                        <option value="evening">저녁</option>
+                                        <option value="night">밤</option>
+                                        <option value="dawn">새벽</option>
+                                        <!-- 다른 시간대 옵션들을 추가할 수 있습니다. -->
+                                    </select>
+                                {% else %}
+                                    <select name="search_time" style="width:100%;height:100%;text-align: center;">
+                                        <option value="morning" selected>오전</option>
+                                        <!-- 다른 시간대 옵션들을 추가하지 않고, 기본적으로 '오전'을 선택하도록 설정합니다. -->
+                                    </select>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if user.is_authenticated %}
+                                    <select name="distance" style="width:100%;height:100%;text-align: center;">
+                                        <option value="300">300m</option>
+                                        <option value="500">500m</option>
+                                        <option value="700">700m</option>
+                                        <option value="1000">1000m</option>
+                                        <!-- 다른 거리 옵션들을 추가할 수 있습니다. -->
+                                    </select>
+                                {% else %}
+                                    <select name="distance" style="width:100%;height:100%;text-align: center;">
+                                        <option value="300" selected>300m</option>
+                                        <!-- 다른 거리 옵션들을 추가하지 않고, 기본적으로 '300m'을 선택하도록 설정합니다. -->
+                                    </select>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            
+            <script>               
+                var  totalScore = cctv_count + drunk_count + police_count + crash_count + conv_count + safe_count
+                var averageScore = ((cctv_count / totalScore * 3 / 10) -
+                                    (drunk_count / totalScore * 2 / 10) +
+                                    (police_count / totalScore * 5) -
+                                    (crash_count / totalScore * 5) +
+                                    (conv_count / totalScore * 2) +
+                                    (safe_count / totalScore * 2) -
+                                    ({{ crime_danger }} / 20000) -
+                                    ({{ count }} / 10000000));
+                var safety = parseFloat((averageScore + {{ score }}).toFixed(4)) * 100;
+            </script>
+               
+            <div class = "result" style = "height:100%;width:100%;">
+
+                    <section class="sec">
+                        <div class="left-card">
+                          <h1 class="lc-h1">안전 지수</h1>
+                          <div class="lc-score">
+                            <script>
+                                if (safety > 100) {
+                                    safety = 100
+                                }
+                                document.write("<p class='lc-result'>" + safety.toFixed(2) + "</p>");
+                            </script>
+                            <p class="lc-total">of 100</p>
+                          </div>
+                            <script>
+                                if (safety < 30) {
+                                    safety_text = "매우 낮음";
+                                } else if (safety >= 30 && safety < 50) {
+                                    safety_text = "낮음";
+                                } else if (safety >= 50 && safety < 70) {
+                                    safety_text = "보통";
+                                } else if (safety >= 70 && safety < 100) {
+                                    safety_text = "높음";
+                                } else if (safety >= 100) {
+                                    safety_text = "매우 높음";
+                                }
+                                var color = (safety < 30) ? 'red' : (safety >= 30 && safety < 50) ? 'orange' : (safety >= 50 && safety < 70) ? 'yellow' : (safety >= 70 && safety < 100) ? 'green' : (safety >= 100) ? 'blue' : '' ;
+                                document.write("<h2 class='lc-grade' style='color: " + color + ";'>" + safety_text + "</p>");
+                            </script>                      
+                          <p class="lc-remarks">
+                            이 안전 지수는 상대적인 자체 지표이며 절대적인 측정이 아닙니다
+                          </p>
+                        </div>
+                        <!-- ------------------------- -->
+                        <div class="right-card">
+                            <h1 class="rc-h1">평가항목</h1>
+                            <div class="rc-scoreboard">
+                                <div class="rc-score cctv">
+                                <p>CCTV</p>
+                                    <script>
+                                        document.write("<p>" + cctv_count + "</p>");
+                                    </script>
+                                </div>
+                                <div class="rc-score police" style = "text-align: center;">
+                                <p>경찰서</p>
+                                    <script>
+                                        document.write("<p>" + police_count + "</p>");
+                                    </script>
+                                </div>
+                                <div class="rc-score safe">
+                                <p>지킴이집</p>
+                                <script>
+                                    document.write("<p>" + safe_count + "</p>");
+                                </script>
+                                </div>
+                                <div class="rc-score conv">
+                                <p>편의점</p>
+                                <script>
+                                    document.write("<p>" + conv_count + "</p>");
+                                </script>
+                                </div>
+                                <div class="rc-score ent">
+                                    <p>유흥업소</p>
+                                    <script>
+                                        document.write("<p>" + drunk_count + "</p>");
+                                    </script>
+                                </div>
+                                <div class="rc-score drunk">
+                                    <p>음주운전</p>
+                                    <script>
+                                        document.write("<p>" + crash_count + "</p>");
+                                    </script>
+                                </div>
+                                <div class="rc-score gu">
+                                    <p>지역</p>
+                                    <p>{{gu_name}}</p>
+                                </div>
+                                <div class="rc-score crime">
+                                    <p>범죄율</p>
+                                    <script>
+                                        document.write("<p>" + ({{ crime_danger }}/10000).toFixed(4) +"</p>");
+                                    </script>
+                                </div>
+                                <div class="rc-score count">
+                                    <p>생활인구</p>
+                                <script>
+                                    document.write("<p>" + Math.floor({{ count }}/10000) + "만" + "</p>");
+                                </script>
+                                </div>
+                            </div>
+                        </div>
+                      </section>            
+            </div>
+        </div>
+    </body>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        window.onload = function(){
+            document.getElementById("address").addEventListener("click", function(){
+                //카카오 지도 발생
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        document.getElementById("address").value = data.address; 
+                        var addressDetailInput = document.querySelector("input[name=address_detail]");
+                        if (addressDetailInput) {
+                            addressDetailInput.focus();
+                        }
+                    }
+                }).open();
+            });
+        }
+    </script>
+</html>
+{% endblock %}
