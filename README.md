@@ -48,7 +48,8 @@
     <li><a href="드랍더비트 범죄 데이터 프로젝트 PDF.pdf">범죄 데이터 PDF<a> - 범죄 데이터 분석 PDF 자료 입니다. </li>
       <li><a href="드랍더비트 범죄 데이터 프로젝트 PPT.pptx">범죄 데이터 PPT<a> - 범죄 데이터 분석 PPT 자료 입니다. </li>
     <li><a href="https://github.com/shmi1234/Machine-Learning-Final-Projects/tree/main/CSV%ED%8C%8C%EC%9D%BC">CSV 파일 리스트<a> - 분석에 사용된 CSV 파일 입니다.</li>
-    <li><a href="https://github.com/shmi1234/Machine-Learning-Final-Projects/blob/main/Django.zip">서비스 구현 페이지<a> - 서비스 구현 페이지 Django 파일 입니다.</li>
+    <li><a href="https://github.com/shmi1234/Machine-Learning-Final-Projects/blob/main/Django.zip">서비스 구현 압축 파일<a> - 서비스 구현 페이지 Django 압축 파일 입니다.</li>
+    <li><a href=" https://github.com/shmi1234/Machine-Learning-Final-Projects/tree/main/project">서비스 구현 페이지<a> - 서비스 구현 페이지 Django 입니다.</li>
   </ul>
 </section>
 
